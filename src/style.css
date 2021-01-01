@@ -1,0 +1,669 @@
+@font-face {
+  font-family: "Elvish";
+  src: local("Elvish"), url(/src/Assets/fonts/Elfica.ttf) format("truetype");
+  font-weight: normal;
+}
+
+* {
+  font-family: "Philosopher", sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  text-align: center;
+  height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/******************************** App ********************************/
+
+.app {
+  margin: 5vh auto;
+}
+
+/******************************* LINKS *******************************/
+
+.all-links {
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  color: inherit;
+  text-decoration: none;
+}
+
+/******************************* NavbarTop *******************************/
+
+.MuiAppBar-root {
+  height: 70px;
+}
+
+.MuiSvgIcon-root {
+  font-size: 2rem !important;
+}
+
+.MuiAppBar-colorPrimary {
+  background-color: #2d2828 !important;
+}
+
+.navbar-grid {
+  max-width: 800px !important;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding: 17px 12px;
+}
+
+.MuiSvgIcon-fontSizeLarge {
+  font-size: 1.75rem;
+}
+
+.name {
+  font-family: "Elvish";
+  font-size: 1.5em;
+  margin: 0px;
+  color: #2d2828;
+  text-shadow: 2px 2px 2px #070707;
+}
+
+/**************************** MENU ****************************/
+
+.menu-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.menu-wrap .toggler {
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 2;
+}
+
+.menu-wrap .hamburger {
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* Hamburger Line */
+.menu-wrap .hamburger > div {
+  position: relative;
+  flex: none;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+/* Hamburger Lines - Top & Bottom */
+.menu-wrap .hamburger > div::before,
+.menu-wrap .hamburger > div::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  width: 100%;
+  height: 2px;
+  background: inherit;
+}
+
+/* Moves Line Down */
+.menu-wrap .hamburger > div::after {
+  top: 10px;
+}
+
+/* Toggler Animation */
+.menu-wrap .toggler:checked + .hamburger > div {
+  transform: rotate(135deg);
+}
+
+/* Turns Lines Into X */
+.menu-wrap .toggler:checked + .hamburger > div:before,
+.menu-wrap .toggler:checked + .hamburger > div:after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+/* Rotate On Hover When Checked */
+.menu-wrap .toggler:checked:hover + .hamburger > div {
+  transform: rotate(225deg);
+}
+
+/* Show Menu */
+.menu-wrap .toggler:checked ~ .menu {
+  visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div {
+  transform: scale(1);
+  transition-duration: var(--menu-speed);
+}
+
+.menu-wrap .toggler:checked ~ .menu > div > div {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.4s;
+}
+
+.menu-wrap .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-wrap .menu > div {
+  background: #000000b3;
+  border-radius: 50%;
+  width: 200vw;
+  height: 200vw;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+
+.menu-wrap .menu > div > div {
+  text-align: center;
+  max-width: 90vw;
+  max-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu > div > div > ul > li {
+  list-style: upper-roman;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.menu-wrap .menu > div > div > ul > li > a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+
+/******************************* HomePage *******************************/
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.inner-container {
+  height: 80vh;
+}
+
+h1 {
+  font-size: 3rem;
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 1rem;
+  border-radius: 0 3rem;
+  color: rgb(241, 241, 241);
+  mix-blend-mode: multiply;
+  text-shadow: 7px 7px 14px rgb(0, 0, 0), -2px -2px 11px rgb(0, 0, 0);
+}
+
+.button {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 2rem;
+  padding-top: 10px;
+  width: 10rem;
+  text-align: center;
+  border: 5px double rgba(0, 0, 0, 0.39);
+  font-weight: bold;
+  text-decoration: none;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+  color: rgb(255, 255, 255);
+  text-shadow: 5px 6px 4px rgb(0, 0, 0);
+  opacity: 0.05;
+  border-radius: 29px;
+}
+
+.split:hover .button {
+  opacity: 0.79;
+  cursor: pointer;
+  animation: opacity-fade 2s ease-in-out 1;
+}
+
+@keyframes opacity-fade {
+  0% {
+    opacity: 0.05;
+  }
+  100% {
+    opacity: 0.79;
+  }
+}
+
+.split.left .button:hover {
+  background-color: rgba(92, 92, 92, 0.47);
+}
+
+.split.right .button:hover {
+  background-color: rgba(92, 92, 92, 0.47);
+}
+
+.split {
+  position: absolute;
+  overflow: hidden;
+  margin: 65px 14px;
+  width: 50%;
+  height: 65vh;
+  box-shadow: 0px 2px 4px -1px rgb(0, 0, 0, 13%),
+    0px 4px 5px 3px rgb(0, 0, 0, 45%), 0px 1px 10px 2px rgb(0, 0, 0, 56%);
+  border-radius: 0px 20px;
+}
+
+.split.left {
+  left: 0;
+  background: url(/src/Assets/about.jpg) center center repeat;
+  background-size: contain;
+  top: 3vh;
+}
+
+.split.left:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(39, 39, 39, 1) 0%,
+    rgba(129, 129, 129, 0) 19%,
+    rgba(129, 129, 129, 0) 81%,
+    rgba(39, 39, 39, 1) 100%
+  );
+}
+
+.split.right {
+  right: 0;
+  background: url(/src/Assets/projects.jpg) center center repeat;
+  background-size: contain;
+}
+
+.split.right:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(39, 39, 39, 1) 0%,
+    rgba(129, 129, 129, 0) 19%,
+    rgba(129, 129, 129, 0) 81%,
+    rgba(39, 39, 39, 1) 100%
+  );
+}
+
+.split.left,
+.split.right,
+.split.right:before,
+.split.left:before {
+  transition: 1000ms all ease-in-out;
+}
+
+.hover-left .left {
+  width: 70%;
+  z-index: 1;
+}
+
+.hover-left .right {
+  width: 30%;
+  filter: blur(1px);
+  opacity: 0.5;
+}
+
+.hover-left .right:before {
+  z-index: 2;
+}
+
+.hover-right .right {
+  width: 70%;
+}
+
+.hover-right .left {
+  width: 30%;
+  filter: blur(1px);
+  opacity: 0.5;
+}
+
+.hover-right .left:before {
+  z-index: 2;
+}
+
+/***************************** Rezime *****************************/
+
+.rezime {
+  padding: 100px 10px;
+  margin-top: 2vh;
+  background-color: rgb(241, 239, 235);
+  box-shadow: 0px 1px 3px 3px rgb(200, 200, 200);
+  text-align: -moz-center;
+  text-align: -webkit-center;
+}
+
+.rezime-grid-container {
+  max-width: 800px;
+}
+
+.rezime .MuiCardMedia-img {
+  filter: drop-shadow(2px 4px 6px black);
+}
+
+.rezime .MuiPaper-root {
+  background-color: rgba(0, 0, 0, 0.079);
+}
+
+.max-width {
+  background-color: rgb(212, 212, 212) !important;
+  max-width: 250px;
+}
+
+.MuiCardMedia-media {
+  width: 85% !important;
+}
+
+.MuiButtonBase-root {
+  cursor: default !important;
+}
+
+.days {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+#clock {
+  border-radius: 25%;
+  filter: sepia(1);
+  opacity: 0.65;
+}
+
+/***************************** About me *****************************/
+
+.about-me {
+  margin: 0 auto;
+}
+
+.about-me h2 {
+  font-size: 3rem;
+}
+
+.about-edu {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.language-container {
+  background-color: #f5f5f5;
+}
+
+.language {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0rem 1rem 3rem;
+}
+
+.eng,
+.ita {
+  position: relative;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.eng::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url(/src/Assets/aboutme/eng.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.11;
+}
+
+.ita::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url(/src/Assets/aboutme/ita.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.11;
+}
+
+#me {
+  width: 100%;
+  filter: drop-shadow(2px 4px 6px black);
+}
+
+.hobbies {
+  padding: 1rem;
+  background-color: #e9ebed;
+}
+
+#kendo,
+#bike {
+  width: 300px;
+  height: 300px;
+  filter: drop-shadow(2px 4px 6px black);
+}
+
+.carousel {
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.carousel .slide {
+  background: #fff0;
+}
+
+.carousel .thumb {
+  width: 50px !important;
+  white-space: normal !important;
+  padding-left: 0px !important;
+}
+
+.carousel .slide .legend {
+  bottom: -12px;
+  border-radius: 10px;
+  background: #000;
+  transition: opacity 0.35s ease-in-out;
+  font-weight: 600;
+}
+
+.carousel .control-next.control-arrow:before {
+  border-left: 8px solid #000;
+}
+
+.carousel .control-prev.control-arrow:before {
+  border-right: 8px solid #000;
+}
+
+.MuiTypography-body1 {
+  font-family: "Philosopher", sans-serif !important;
+}
+
+/***************************** History *****************************/
+
+.history {
+  padding-top: 4vh;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.history h2 {
+  font-size: 2.5rem;
+}
+
+#history-img {
+  width: 250px;
+}
+
+.history img {
+  width: 150px;
+  padding: 15px;
+}
+
+.MuiPaper-elevation3 {
+  padding: 15px;
+  margin: 15px auto;
+  width: 35%;
+  min-width: 250px;
+}
+
+/***************************** Projects *****************************/
+
+.projects {
+  padding-top: 44px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.git::before {
+  position: absolute;
+  content: "";
+  top: 27px;
+  bottom: 0;
+  left: 29px;
+  right: 0;
+  background-image: url(/src/Assets/projects/git-bg.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 170px;
+  filter: brightness(0.45);
+}
+
+#projects-img {
+  width: 300px;
+}
+
+.projects .MuiPaper-root {
+  background-color: #ebebebb5 !important;
+}
+
+.title {
+  font-size: 3rem;
+  color: rgb(255, 255, 255);
+  mix-blend-mode: multiply;
+  text-shadow: 7px 7px 14px rgb(0, 0, 0), -2px -2px 11px rgb(0, 0, 0);
+}
+
+.split-pane {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.app-side {
+  background-image: url(/src/Assets/projects/app-bg.jpg);
+}
+
+.web-side {
+  background-image: url(/src/Assets/projects/web-bg.jpg);
+}
+
+/******************************* FooterPage *******************************/
+
+.footer {
+  position: relative;
+  padding: 10px;
+  background-color: #2d2828;
+  color: rgb(255, 255, 255);
+  box-shadow: -2px 0px 0px 1px rgb(210, 210, 210);
+}
+
+.footer::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url(/src/Assets/footer/faces.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.15;
+  filter: invert(1);
+}
+
+#barcode {
+  font-family: "Libre Barcode 128", cursive;
+  font-size: 2.25em;
+}
+
+/******************************* @media *******************************/
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: 1rem;
+  }
+  .button {
+    width: 5rem;
+    height: 1rem;
+    padding: 10px;
+    font-size: 12px;
+    opacity: 0.6;
+    border: 3px double rgba(0, 0, 0, 0.39);
+  }
+  .navbar-grid {
+    padding: 21px;
+  }
+  .inner-container {
+    height: 57vh;
+  }
+  .split {
+    height: 40vh;
+  }
+  .home-page-down {
+    margin-top: 0px;
+  }
+  .rezime {
+    padding: 20px 10px;
+  }
+  .class-paper::after {
+    top: 23vh;
+  }
+}
